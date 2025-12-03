@@ -41,7 +41,7 @@ fn solution1(ranges: &Vec<(u64, u64)>) -> u64 {
     ranges
         .iter()
         .flat_map(|(lower, upper)| (*lower..=*upper).filter(|id| invalid_id(*id, 2)))
-        .reduce(|sum, count| sum + count)
+        .reduce(|sum, id| sum + id)
         .unwrap_or(0)
 }
 
@@ -67,7 +67,7 @@ fn solution2(ranges: &Vec<(u64, u64)>) -> u64 {
                 .collect::<HashSet<u64>>()
                 .into_iter()
         })
-        .reduce(|sum, count| sum + count)
+        .reduce(|sum, id| sum + id)
         .unwrap_or(0)
 }
 
