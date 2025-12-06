@@ -4,33 +4,11 @@
 #include <cstdlib>
 #include <iostream>
 #include <string>
-#include <sys/types.h>
-#include <unordered_set>
 #include <vector>
 
+#include "common.h"
+
 using Range = ::std::pair<uint64_t, uint64_t>;
-
-void print_usage(std::string_view name) {
-  std::cout << "Usage: " << name << " <solution-part>" << std::endl;
-}
-
-std::string_view get_solution_part_arg(int argc, const char **argv) {
-  if (argc != 2) {
-    print_usage(argv[0]);
-    exit(1);
-  }
-  std::string_view solution_part = argv[1];
-  const std::unordered_set<std::string_view> accepted_solution_part_vals = {
-      "1",
-      "2",
-  };
-  if (const auto it = accepted_solution_part_vals.find(solution_part);
-      it == accepted_solution_part_vals.end()) {
-    print_usage(argv[0]);
-    exit(1);
-  }
-  return solution_part;
-}
 
 bool is_fresh_ingredient(const std::vector<Range> &id_ranges, uint64_t id) {
   size_t lo = 0;
